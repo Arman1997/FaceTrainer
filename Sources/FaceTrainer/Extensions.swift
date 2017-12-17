@@ -25,19 +25,6 @@ internal extension NSImage {
         return image
     }
     
-    func normalaized() -> NSImage {
-        let targetSize = NSSize(width: self.size.width, height: self.size.height)
-        let frame = NSRect(x: 0, y: 0, width: targetSize.width, height: targetSize.height)
-        guard let representation = self.bestRepresentation(for: frame, context: nil, hints: nil) else {
-            return self
-        }
-        let image = NSImage(size: targetSize, flipped: false, drawingHandler: { (_) -> Bool in
-            return representation.draw(in: frame)
-        })
-        
-        return image
-    }
-    
     func rotated(byDegrees rotationDegree: CGFloat) -> NSImage {
         let degrees = (rotationDegree * CGFloat.pi / 180)
         var imageBounds = NSZeroRect ; imageBounds.size = self.size
