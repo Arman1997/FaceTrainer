@@ -8,7 +8,7 @@
 import Foundation
 import AppKit
 
-internal final class FVFaceDetector {
+public final class FVFaceDetector {
     
     func detectFace(inImageWithData data: Data) throws -> NSImage? {
         guard let image = NSImage(data: data) else {

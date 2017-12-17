@@ -22,7 +22,7 @@ final class FVPerson {
     
 }
 
-final class FVRecognitionTrainController {
+public final class FVRecognitionTrainController {
     
     typealias MeanValuesVector = Vector
     
