@@ -13,15 +13,15 @@ extension String: Error {
     
 }
 
-internal struct TrainFaceBitArray {
+public struct TrainFaceBitArray {
     var bitArray: Vector
-    init(image: NSImage) {
+    public init(image: NSImage) {
         let rgbaImage = RGBAImage(image: image)
         let rgbaImageBitArray = Array(rgbaImage!.pixels)
         bitArray = rgbaImageBitArray.map({ (Double($0.B) + Double($0.R) + Double($0.G)) / Double(3)})
     }
     
-    init(data: Data) throws {
+    public init(data: Data) throws {
         guard let faceImage = NSImage(data: data) else {
             //TODO
             throw "some error need to be implemented"

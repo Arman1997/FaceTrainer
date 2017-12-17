@@ -8,10 +8,10 @@
 import Foundation
 import AppKit
 
-internal class FVRecognitionImage {
+public  class FVRecognitionImage {
     private var bitArray: TrainFaceBitArray!
     var image: NSImage
-    init(image: NSImage) throws {
+    public init(image: NSImage) throws {
         let faceDetector = FVFaceDetector()
         guard let detectedFaceImage = try faceDetector.detectFace(inImage: image) else {
             throw FVError.noFaceDetected
@@ -20,14 +20,14 @@ internal class FVRecognitionImage {
         self.image = detectedFaceImage.grayScaleImage()
     }
     
-    convenience init(data: Data) throws {
+    public convenience init(data: Data) throws {
         guard let image = NSImage(data: data) else {
             throw "error: invalid parameter"
         }
         try self.init(image: image)
     }
     
-    internal func getBitArray() -> TrainFaceBitArray {
+    public func getBitArray() -> TrainFaceBitArray {
         return self.bitArray
     }
 }

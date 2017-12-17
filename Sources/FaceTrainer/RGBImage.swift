@@ -9,11 +9,11 @@ import AppKit
 import Foundation
 import LASwift
 
-enum FVError: Error {
+public enum FVError: Error {
     case noFaceDetected
 }
 
-public struct Pixel {
+internal struct Pixel {
     
     public var value: UInt32
     
@@ -38,7 +38,7 @@ public struct Pixel {
     }
 }
 
-public struct RGBAImage {
+internal struct RGBAImage {
     public var pixels: UnsafeMutableBufferPointer<Pixel>
     public var width: Int
     public var height: Int

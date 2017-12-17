@@ -10,7 +10,11 @@ import AppKit
 
 public final class FVFaceDetector {
     
-    func detectFace(inImageWithData data: Data) throws -> NSImage? {
+    public init() {
+        
+    }
+    
+    public func detectFace(inImageWithData data: Data) throws -> NSImage? {
         guard let image = NSImage(data: data) else {
             throw "error: invalid data"
         }
@@ -19,7 +23,7 @@ public final class FVFaceDetector {
         return detectedFaceImage
     }
     
-    func detectFace(inImage image: NSImage) throws -> NSImage? {
+    public func detectFace(inImage image: NSImage) throws -> NSImage? {
         let imageForFaceDetection = image
         var rect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
         let imageReference = imageForFaceDetection.cgImage(forProposedRect: &rect, context: nil, hints: nil)

@@ -10,13 +10,13 @@ import Foundation
 import LASwift
 import AppKit
 
-final class FVPerson {
+public final class FVPerson {
     private var _faceID: String!
-    var faceID: String {
+    public var faceID: String {
         return _faceID
     }
     
-    init(id: String) {
+    public init(id: String) {
         self._faceID = id
     }
     
@@ -37,14 +37,18 @@ public final class FVRecognitionTrainController {
     private var porjectionMatrix: Matrix!
     private var personsList = [FVPerson]()
     
-    func startTrain() {
+    public init() {
+        
+    }
+    
+    public func startTrain() {
         self.countMeanValuesVector()
         self.countAverageVectors()
         self.countCovariance()
         self.findEigens()
     }
     
-    func appendFace(forImage faceImage: NSImage) throws -> FVPerson {
+    public func appendFace(forImage faceImage: NSImage) throws -> FVPerson {
         do {
             let recognitionImageBitsArray =  try FVRecognitionImage(image: faceImage).getBitArray()
             self.facesBitArraysCollection.append(recognitionImageBitsArray)
@@ -93,7 +97,7 @@ public final class FVRecognitionTrainController {
         return count
     }
     
-    func verify(face: FVRecognitionImage) -> FVPerson {
+    public func verify(face: FVRecognitionImage) -> FVPerson {
         let faceBitMap = face.getBitArray().bitArray
         var faceMatrix = zeros(faceBitMap.count, 1)
         faceMatrix = insert(faceMatrix, col: faceBitMap - meanValuesVector, at: 0)
