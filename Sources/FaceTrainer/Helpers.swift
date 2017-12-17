@@ -8,6 +8,7 @@
 import Foundation
 import Accelerate
 import LASwift
+import AppKit
 
 internal func eigen(_ A: Matrix) -> [Eigen] {
     var matrix = [__CLPK_doublereal]()
@@ -55,10 +56,13 @@ internal func computeScaleFaceRect(fromRect originalRect: CGRect,  rotationAngle
     return CGRect(x: originalRect.origin.x - rotationOffset, y: originalRect.origin.y - rotationOffset, width: originalRect.size.width + (2 * rotationOffset), height: originalRect.size.height + (2 * rotationOffset))
 }
 
-internal func cutFace(image: UIImage,rect: CGRect) -> UIImage {
-    let cropImage = image.cgImage!
+internal func cutFace(image: NSImage ,rect: CGRect) -> NSImage {
+    var rect = rect
+    let imageReference = image.cgImage(forProposedRect: &rect, context: nil, hints: nil)
+    
+    let cropImage = imageReference!
     let cropedImage = cropImage.cropping(to: rect)
-    return UIImage(cgImage: cropedImage!)
+    return NSImage(cgImage: cropedImage!, size: rect.size)
 }
 
 
