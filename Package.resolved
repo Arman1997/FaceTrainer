@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "LASwift",
+        "repositoryURL": "https://github.com/alexandertar/LASwift",
+        "state": {
+          "branch": null,
+          "revision": "fed2d9040066f0dfd71e0276a514377d81f1290e",
+          "version": "0.1.2"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
